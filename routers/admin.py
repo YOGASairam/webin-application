@@ -35,37 +35,28 @@ async def list_of_users(db: db_dependency):
     A `user_id` must be provided in the request body for all actions.
     """)
 async def user_action(db: db_dependency, request: schemas.AdminUserActionRequest):
-    # Find the user first, since all actions need it
     user = db.query(models.User).filter(models.User.id == request.user_id).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
-    if request.action == schemas.AdminAction.DELETE:
+
+    action = request.action
+    
+    if action == schemas.AdminAction.DELETE:
         db.delete(user)
         db.commit()
         return JSONResponse(content={"message": f"User {request.user_id} was successfully deleted."})
-    elif request.action == schemas.AdminAction.DEACTIVATE:
-        user.is_active = False
-        db.add(user)
-        db.commit()
-        db.refresh(user)
-        return UserResponse.model_validate(user)
-    elif request.action == schemas.AdminAction.REACTIVATE:
-        user.is_active = True
-        db.add(user)
-        db.commit()
-        db.refresh(user)
-        return UserResponse.model_validate(user)
-    elif request.action == schemas.AdminAction.PROMOTE:
-        user.role = "admin"
-        db.add(user)
-        db.commit()
-        db.refresh(user)
-        return UserResponse.model_validate(user)
-    elif request.action == schemas.AdminAction.DEMOTE:
-        user.role = "customer"
-        db.add(user)
-        db.commit()
-        db.refresh(user)
-        return UserResponse.model_validate(user)
     
-
+    # All other actions are modifications
+    if action == schemas.AdminAction.DEACTIVATE:
+        user.is_active = False
+    elif action == schemas.AdminAction.REACTIVATE:
+        user.is_active = True
+    elif action == schemas.AdminAction.PROMOTE:
+        user.role = "admin"
+    elif action == schemas.AdminAction.DEMOTE:
+        user.role = "customer"
+    
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return UserResponse.model_validate(user)
