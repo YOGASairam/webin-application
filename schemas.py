@@ -119,6 +119,8 @@ class OrderResponse(BaseModel):
     order_date: datetime
     status: str
     items: List[OrderItemResponse]
+    # total_price: float
+    # discount_applied: Optional[float] = None
 
     class Config:
         from_attributes = True
@@ -135,6 +137,7 @@ class OrderActionRequest(BaseModel):
     action: OrderAction = Field(..., alias='_action')
     order_id: Optional[int] = None
     items: Optional[List[OrderItemBase]] = None
+    # discount_code: Optional[str] = None 
 
 # ===============================================
 #                  SCHEMAS: ADMIN

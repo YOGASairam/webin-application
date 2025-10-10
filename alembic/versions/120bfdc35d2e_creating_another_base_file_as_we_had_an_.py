@@ -1,8 +1,8 @@
-"""removing all the new attr age phone number and cat
+"""creating another base file as we had an issues
 
-Revision ID: ec47026d44f6
-Revises: fe56212bfc52
-Create Date: 2025-10-09 16:03:58.265989
+Revision ID: 120bfdc35d2e
+Revises: 
+Create Date: 2025-10-10 12:55:05.884009
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'ec47026d44f6'
-down_revision: Union[str, Sequence[str], None] = 'fe56212bfc52'
+revision: str = '120bfdc35d2e'
+down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
