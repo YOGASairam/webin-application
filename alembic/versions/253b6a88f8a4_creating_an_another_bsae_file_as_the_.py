@@ -1,8 +1,8 @@
-"""creating another base file as we had an issues
+"""creating an another bsae file as the reference is disturbed
 
-Revision ID: 120bfdc35d2e
+Revision ID: 253b6a88f8a4
 Revises: 
-Create Date: 2025-10-10 12:55:05.884009
+Create Date: 2025-10-10 13:06:21.203494
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '120bfdc35d2e'
+revision: str = '253b6a88f8a4'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
