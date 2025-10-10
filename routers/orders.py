@@ -43,9 +43,7 @@ async def manage_orders(user: user_dependency, db: db_dependency, request: schem
                 db.add(product)
         
         db.commit()
-        final_order = db.query(models.Order).options(
-            joinedload(models.Order.items).joinedload(models.OrderItem.product)
-        ).filter(models.Order.id == new_order.id).first()
+        final_order = db.query(models.Order).options(joinedload(models.Order.items).joinedload(models.OrderItem.product)).filter(models.Order.id == new_order.id).first()
         return final_order
     elif action == schemas.OrderAction.CANCEL:
         if not request.order_id:
