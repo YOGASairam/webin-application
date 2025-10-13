@@ -60,3 +60,4 @@ async def user_action(db: db_dependency, request: schemas.AdminUserActionRequest
     db.commit()
     db.refresh(user)
     return UserResponse.model_validate(user)
+
