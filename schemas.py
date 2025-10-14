@@ -30,8 +30,8 @@ class CreateUserRequest(UserBase):
 class UserResponse(UserBase):
     id: int
     is_active: bool
-    # phone_number: Optional[str] = None
-    # age: Optional[int] = None
+    phone_number: Optional[str] = None
+    age: Optional[int] = None
     role: str
 
     class Config:
@@ -41,8 +41,8 @@ class UserUpdateRequest(BaseModel):
     email: Optional[str] = None
     first_name: Optional[str] = Field(None, min_length=2)
     last_name: Optional[str] = Field(None, min_length=2)
-    # phone_number: Optional[str] = None
-    # age: Optional[int] = Field(None, gt=0)
+    phone_number: Optional[str] = None
+    age: Optional[int] = Field(None, gt=0)
 
 class UserPasswordRequest(BaseModel):
     password: str = Field(..., min_length=6, max_length=72)

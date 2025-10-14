@@ -16,8 +16,8 @@ class User(Base):
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
     role = Column(String, nullable=False)
-    # phone_number = Column(String, nullable=True) # Enabled
-    # age = Column(Integer, nullable=True)         # Enabled
+    phone_number = Column(String, nullable=True) # Enabled
+    age = Column(Integer, nullable=True)         # Enabled
     
     orders = relationship("Order", back_populates="owner")
 
