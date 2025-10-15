@@ -30,7 +30,7 @@ class Product(Base):
     price = Column(Float, nullable=False)
     quantity_in_stock = Column(Integer, default=0)
     is_active = Column(Boolean, nullable=False, server_default='true')
-    category = Column(String, nullable=True, index=True) # Enabled
+    # category = Column(String, nullable=True, index=True) # Enabled
 
 class Order(Base):
     __tablename__ = "orders"
