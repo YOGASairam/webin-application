@@ -57,14 +57,14 @@ class ProductBase(BaseModel):
     description: str = Field(..., min_length=3, max_length=1000)
     price: float = Field(..., gt=0)
     quantity_in_stock: int = Field(..., ge=0)
-    category: Optional[str] = None
+    # category: Optional[str] = None
 
 class ProductUpdateRequest(BaseModel):
     name: Optional[str] = Field(None, min_length=3)
     description: Optional[str] = Field(None, min_length=3, max_length=1000)
     price: Optional[float] = Field(None, gt=0)
     quantity_in_stock: Optional[int] = Field(None, ge=0)
-    category: Optional[str] = Field(None, min_length=3)
+    # category: Optional[str] = Field(None, min_length=3)
     is_active: Optional[bool] = None
 
 class ProductAction(str, Enum):
@@ -79,7 +79,7 @@ class ProductUpsertRequest(BaseModel):
     description: Optional[str] = Field(None, min_length=3, max_length=1000)
     price: Optional[float] = Field(None, gt=0)
     quantity_in_stock: Optional[int] = Field(None, ge=0)
-    category: Optional[str] = None
+    # category: Optional[str] = None
 
 class ProductResponse(ProductBase):
     id: int
